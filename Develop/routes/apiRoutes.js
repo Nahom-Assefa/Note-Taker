@@ -1,8 +1,12 @@
-const db = require("../db/db.json");
+let db = require("../db/db.json");
 const router = require("express").Router();
 const fs = require("fs");
 const path = require("path");
-//const { handleNoteSave } = require("../public/assets/js/index");
+const crypto = require("crypto");
+let savedNote = [];
+
+
+
 
 router.get("/notes", (req, res) => {
   const results = db;
@@ -21,10 +25,14 @@ router.post("/notes", (req, res) => {
     }
     console.log("line 22", data);
     console.log("line 23", JSON.parse(data));
-    const savedNote = JSON.parse(data);
-    savedNote.push(input);
-    console.log("saveNpote", savedNote);
+    savedNote = JSON.parse(data);
 
+    //add Id to new note object and push to array
+    input.id = crypto.randomBytes(16).toString("hex");
+    savedNote.push(input);
+    console.log("saveNote", savedNote);
+
+    //write to database
     fs.writeFileSync(
       path.join(__dirname, "../db/db.json"),
       JSON.stringify(savedNote)
@@ -34,16 +42,30 @@ router.post("/notes", (req, res) => {
   });
 });
 
+router.delete('/notes/:id', (req, res) => {
+const {id} = req.params;
+const deleted = db.find(data => data.id === id);
+if (deleted) {
+db = db.filter(data => data.id !== id);
+res.status(200).json(deleted);
+console.log('line 50', deleted);
+console.log('line 51', db);
+} else {
+  res.status(404).json({message: 'damn son wherdya find dis?'});
+}
+
+fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(db));
+
+})
+
+
+
+
+
+
+
+
+
 module.exports = router;
 
-// function createNewAnimal (body, animalsArray) {
-//     const animal = body;
-//     animalsArray.push(animal);
 
-//     fs.writeFileSync(
-//       path.join(__dirname, '../data/animals.json'),
-//       JSON.stringify({ animals: animalsArray }, null, 2)
-//     );
-
-//     return animal;
-//   }
