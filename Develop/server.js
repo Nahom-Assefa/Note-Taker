@@ -1,3 +1,4 @@
+// Establishing port/routes, and access to packages
 const express = require('express');
 const apiRoutes = require('./routes/apiRoutes');
 const noteRoutes = require('./routes/noteRoutes');
