@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Nahom-Assefa/Note-Taker#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
   }
 }
