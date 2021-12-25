@@ -1,15 +1,24 @@
 # Note Taker Starter Code
 
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
+**Version 1.0.0**
+
+## Description 
+The purpose of this project was to establish routes to make a note taker application function properly in terms of persistence, addition of new notes in the data set, and functionality to delete notes from the data set.
+
+## Significant Changes
+Routes were designated based on if they were directed towards the client side or server side. On the client side we made it so the index and note html were displayed to the user. On the server side we read the data set via a get route, added data via the post method, and used the delete method to remove data from the json data set.
+
+## Challenges
+The biggest challenge was theoretical rather than coding complexity. As boiler plate we received the index.js file however the challenge was in order to effectuate a route that was sensible one would need a solid understanding of what the index.js file was doing in terms of the various functions being applied. 
+
+## Screenshot 
+![](noteTaker-screenshot.png)
+
+### Deployed Link 
+https://nahom-assefa.github.io/Note-Taker/
+
+### Heroku Link
+https://git.heroku.com/nahom12notetaker.git
+
+#### License
+License and Copyright © Xander Rapstine, Trilogy Education Services/2U
